@@ -1,17 +1,7 @@
-interface HttpRequest {
-  body: {
-    name: string
-    email: string
-    password: string
-    passwordConfirmation: string
-  }
-}
+import type { HttpRequest, HttpResponse } from '../protocols/http'
 
 export class SignUpController {
-  handle(httpRequest: HttpRequest): {
-    statusCode: number
-    body: Error
-  } {
+  handle(httpRequest: HttpRequest): HttpResponse {
     const { name, email } = httpRequest.body
     if (!name) {
       return {
